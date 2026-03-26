@@ -1,7 +1,7 @@
 AI Video Agent — Autonomous Content Pipeline
 An end-to-end, multi-agent AI workflow built in Python that autonomously generates, renders, and publishes YouTube Shorts.
 
-This project orchestrates multiple AI APIs to handle topic selection, scriptwriting, voiceover generation, and video rendering, culminating in a fully automated upload sequence routed to specific YouTube channels.
+This project was built using AI-assisted development (Claude & Antigravity IDE). It orchestrates multiple AI APIs to handle topic selection, scriptwriting, voiceover generation, and video rendering, culminating in a fully automated upload sequence routed to specific YouTube channels.
 
 System Architecture
 The project is deliberately decoupled into two core components to ensure stability, prevent API timeouts, and allow for manual quality assurance when needed.
@@ -9,7 +9,7 @@ The project is deliberately decoupled into two core components to ensure stabili
 1. The Generation Engine (jpeeezy_agent.py)
 A custom agentic workflow that handles the creative and rendering processes without manual intervention.
 
-Orchestration: Claude AI manages the logical flow and multi-agent handoffs.
+Redundant Orchestration (Failover): Engineered an automatic fallback mechanism. Claude Haiku acts as the primary orchestrator, but seamlessly fails over to OpenAI GPT-4o-mini if Anthropic API credits are exhausted or endpoint errors occur, ensuring zero downtime.
 
 Scripting & Hooks: OpenAI GPT-4o generates viral-optimized scripts and metadata.
 
@@ -17,14 +17,14 @@ Visuals & Audio: OpenAI TTS generates natural voiceovers, while DALL-E 3 sources
 
 Rendering: Creatomate API compiles the assets, applies captions, and renders the final HD MP4.
 
-Notification: Telegram Bot API sends status updates and completion alerts to a mobile device.
+Notification: Telegram Bot API sends status updates and completion alerts.
 
 2. The Decoupled Uploader (auto_uploader.py)
 A standalone upload pipeline for locally saved or pre-generated videos.
 
 Folder-Based Routing: Monitors a local ready_to_upload directory.
 
-Publishing: Uses the YouTube Data API v3 to authenticate and upload the video to the correct channel with AI-generated titles and descriptions.
+Publishing: Uses the YouTube Data API v3 to authenticate and securely upload the video to the correct channel.
 
 File Management: Automatically moves successfully published MP4s to an archive folder to prevent duplicate uploads.
 
@@ -33,7 +33,7 @@ Language: Python
 
 Development Environment: Antigravity IDE
 
-AI & Logic: Claude API, OpenAI GPT-4o / DALL-E 3
+AI & Logic: Claude API (Haiku), OpenAI API (GPT-4o, GPT-4o-mini, DALL-E 3, TTS)
 
 Media Rendering: Creatomate API
 
