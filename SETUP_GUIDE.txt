@@ -1,0 +1,298 @@
+# ╔══════════════════════════════════════════════════════╗
+# ║     JPEEEZY AGENT — COMPLETE SETUP GUIDE            ║
+# ║     Zero assumed knowledge. Follow in order.        ║
+# ╚══════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT YOU NEED BEFORE STARTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Already pre-filled in the script (nothing to do):
+   - Pexels API Key
+   - Creatomate API Key
+   - Creatomate Template ID
+   - Google Sheet ID
+
+❌ You fill in (just 2 keys):
+   - OpenAI API Key   → platform.openai.com → API Keys
+   - Anthropic API Key → console.anthropic.com → API Keys
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — CREATE YOUR PROJECT FOLDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create a folder anywhere on your computer. Example:
+
+  Windows: C:\Users\YourName\jpeeezy\
+  Mac/Linux: /Users/YourName/jpeeezy/
+
+Put these files inside that folder:
+  - jpeeezy_agent.py
+  - requirements.txt
+  - SETUP_GUIDE.txt  (this file)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — INSTALL PYTHON (if you don't have it)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Check if Python is already installed:
+  1. Open Terminal (Mac) or Command Prompt (Windows)
+  2. Type:  python --version
+  3. If you see "Python 3.10" or higher → skip to Step 3
+  4. If not → go to https://python.org/downloads
+     Download Python 3.12 → Install it
+     ⚠️ IMPORTANT on Windows: check "Add Python to PATH" during install!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HOW TO OPEN YOUR TERMINAL / COMMAND PROMPT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Windows:
+  Press Windows key → type "cmd" → press Enter
+  OR: press Windows + R → type "cmd" → press Enter
+
+Mac:
+  Press Cmd + Space → type "Terminal" → press Enter
+
+Linux:
+  Press Ctrl + Alt + T
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — NAVIGATE TO YOUR PROJECT FOLDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+In your terminal/command prompt, navigate to the folder:
+
+  Windows example:
+    cd C:\Users\YourName\jpeeezy
+
+  Mac/Linux example:
+    cd /Users/YourName/jpeeezy
+
+  ✅ Quick tip (Windows): Type "cd " then DRAG the folder into the
+     command prompt window — it auto-fills the path!
+
+  ✅ Quick tip (Mac): Type "cd " then DRAG the folder into the
+     terminal window — same trick!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — INSTALL DEPENDENCIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Once you're in the folder, run this ONE command:
+
+  pip install -r requirements.txt
+
+  This installs all the libraries the agent needs.
+  Wait for it to finish — takes 1-2 minutes.
+
+  If you see "pip not found", try:
+    python -m pip install -r requirements.txt
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — ADD YOUR 2 API KEYS TO THE SCRIPT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Open jpeeezy_agent.py in any text editor:
+  - Windows: right-click → Open with → Notepad
+  - Mac: right-click → Open with → TextEdit
+  - Better option (free): download VS Code from code.visualstudio.com
+
+Find these 2 lines near the top (around line 35-36):
+
+  ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "PASTE_YOUR_ANTHROPIC_KEY_HERE")
+  OPENAI_API_KEY    = os.getenv("OPENAI_API_KEY",    "PASTE_YOUR_OPENAI_KEY_HERE")
+
+Replace the placeholder text with your actual keys:
+
+  ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "sk-ant-api03-xxxxxxxxxxxx")
+  OPENAI_API_KEY    = os.getenv("OPENAI_API_KEY",    "sk-proj-xxxxxxxxxxxx")
+
+  → Get Anthropic key: https://console.anthropic.com → API Keys → Create Key
+  → Get OpenAI key:    https://platform.openai.com → API Keys → Create Key
+
+Save the file. That's it for keys!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 6 — GOOGLE SHEETS SERVICE ACCOUNT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This lets the agent read/write your Google Sheet without a browser.
+
+  1. Go to: https://console.cloud.google.com
+  2. Sign in with your Google account
+  3. Click "Select a project" at the top → "New Project"
+     Name it: jpeeezy-agent → Create
+
+  4. In the search bar at the top, search: "Google Sheets API"
+     Click it → click "Enable"
+
+  5. Search again: "Google Drive API" → Enable that too
+
+  6. Left sidebar → "IAM & Admin" → "Service Accounts"
+     → "+ Create Service Account"
+     Name: jpeeezy-sheets → Create and Continue → Done
+
+  7. Click on the service account you just created
+     → "Keys" tab → "Add Key" → "Create New Key"
+     → Choose JSON → Create
+     → A file downloads automatically
+
+  8. Rename that downloaded file to:
+        gsheets_service_account.json
+     Move it into your jpeeezy folder (same folder as the .py file)
+
+  9. Open the JSON file in Notepad — find "client_email"
+     Copy that email address (looks like: jpeeezy-sheets@xxx.iam.gserviceaccount.com)
+
+  10. Open your Google Sheet:
+      https://docs.google.com/spreadsheets/d/12LWKmgnol-IeHe8Xfm6sVtYMIlvVC6L_qH4hxMwJU_g
+      → Click Share (top right)
+      → Paste the service account email
+      → Set to "Editor"
+      → Send
+
+  ✅ Done! The agent can now read and update your sheet.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 7 — YOUTUBE OAUTH (2 CHANNELS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You need to do this ONCE for each YouTube channel.
+
+  1. Go to: https://console.cloud.google.com
+     (same project you created in Step 6)
+
+  2. Search "YouTube Data API v3" → Enable it
+
+  3. Left sidebar → "APIs & Services" → "Credentials"
+     → "+ Create Credentials" → "OAuth 2.0 Client IDs"
+
+  4. If asked to configure consent screen:
+     → External → Create
+     → App name: Jpeeezy Agent
+     → Your email for support
+     → Save and Continue through all steps
+     → Back to Credentials
+
+  5. "+ Create Credentials" → "OAuth 2.0 Client ID"
+     → Application type: Desktop App
+     → Name: Jpeeezy Channel
+     → Create
+
+  6. Click Download (arrow icon) on the credential you just made
+     → Rename the file to: youtube_credentials_jpeezy.json
+     → Move to your jpeeezy folder
+
+  7. Repeat steps 5-6 for the second channel:
+     → Name: AI Money Channel
+     → Download → rename to: youtube_credentials_ai_money.json
+     → Move to your jpeeezy folder
+
+  ⚠️ IMPORTANT — Add Test Users:
+     Left sidebar → "OAuth consent screen" → "Test users"
+     → Add Both your Google account emails
+     (the ones connected to each YouTube channel)
+
+  ✅ First time you run the agent, a browser window will open
+     asking you to log in. Just click Allow.
+     After that it saves the token — no browser needed again.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 8 — YOUR FOLDER SHOULD LOOK LIKE THIS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  jpeeezy/
+  ├── jpeeezy_agent.py                    ← main script (keys filled in)
+  ├── requirements.txt                    ← dependencies
+  ├── SETUP_GUIDE.txt                     ← this file
+  ├── gsheets_service_account.json        ← from Step 6
+  ├── youtube_credentials_jpeezy.json     ← from Step 7
+  └── youtube_credentials_ai_money.json   ← from Step 7
+
+  (These get auto-created on first run:)
+  ├── youtube_token_jpeezy.pickle
+  └── youtube_token_ai_money.pickle
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 9 — RUN THE AGENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Open your terminal, navigate to the jpeeezy folder, then:
+
+  🧪 First test — process one video:
+     python jpeeezy_agent.py run
+
+  💬 Chat mode — talk to the agent:
+     python jpeeezy_agent.py chat
+
+  ⏰ Fully automated daily mode:
+     python jpeeezy_agent.py schedule
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 10 — RUNNING 24/7 WITHOUT KEEPING YOUR PC ON
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Option A — Keep it simple (free): Leave your PC on with the
+  terminal running. Fine for testing.
+
+Option B — Run on a cheap VPS ($4/month):
+  Sign up at: https://railway.app or https://digitalocean.com
+  Upload your folder, run:
+    screen -S jpeeezy
+    python jpeeezy_agent.py schedule
+    (Press Ctrl+A then D to detach — keeps running 24/7)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COMMON ERRORS & FIXES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ❌ "ModuleNotFoundError"
+     → Run: pip install -r requirements.txt again
+
+  ❌ "No pending topics found"
+     → Open your Google Sheet → make sure some rows have status = "pending"
+
+  ❌ "FileNotFoundError: gsheets_service_account.json"
+     → Make sure that file is in the SAME folder as jpeeezy_agent.py
+
+  ❌ "Access denied" on Google Sheets
+     → Make sure you shared the sheet with the service account email (Step 6 #10)
+
+  ❌ YouTube auth browser doesn't open
+     → Make sure you added your Google account as a Test User (Step 7 ⚠️)
+
+  ❌ "invalid_grant" on YouTube
+     → Delete the .pickle token files and run again — it will re-auth
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MONTHLY COST ESTIMATE (1 video/day)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Anthropic (Claude agent brain): ~$1-2/month
+  OpenAI (script + TTS):          ~$3-5/month
+  Pexels:                         FREE
+  Creatomate:                     your existing plan
+  YouTube:                        FREE
+  ─────────────────────────────────────────────────
+  Total new cost:                 ~$4-7/month
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+QUESTIONS?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Just paste the error message and I'll fix it immediately.

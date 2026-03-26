@@ -1,0 +1,22 @@
+import os
+from dotenv import load_dotenv
+
+# Load the hidden .env file
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+PEXELS_API_KEY      = os.getenv("PEXELS_API_KEY")
+CREATOMATE_API_KEY  = os.getenv("CREATOMATE_API_KEY")
+CREATOMATE_TEMPLATE = os.getenv("CREATOMATE_TEMPLATE")
+GOOGLE_SHEET_ID     = os.getenv("GOOGLE_SHEET_ID")
+GDRIVE_AUDIO_FOLDER_ID     = os.getenv("GDRIVE_AUDIO_FOLDER_ID")
+GSHEETS_SERVICE_ACCOUNT_FILE = os.getenv("GSHEETS_SERVICE_ACCOUNT_FILE")
+KLING_ACCESS_KEY = os.getenv("KLING_ACCESS_KEY")
+KLING_SECRET_KEY = os.getenv("KLING_SECRET_KEY")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID")
+
+
+
+
